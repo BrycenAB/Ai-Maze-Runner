@@ -24,6 +24,13 @@ Welcome to the Ai_Sandbox_Maze project, where you can train and test neural netw
    5.) Monitor the information displayed in the top right UI, such as number of bots that have died and furthest position.
 
    6.) If you wish to start the test over on the same generation simply press the reset button, if you wish to completly start fresh select the check box under the reset button and press reset.
+   
+   
+# Bot Overview
+   - The bots NN consists of 3 layers
+      - Layer 1 is the input layer, fed by 5 raycasts (5 neurons) that go out 10 meters in front of them to observer the surrounding area
+      - layer 2 is the hidden layer consisting of 3 Neurons
+      - Layer 3 is the output layer consisting of 2 Neurons, one controlling the speed of the bot and the other controlling rotation
 
 
 # Contributing
