@@ -25,6 +25,10 @@ Welcome to the Ai_Sandbox_Maze project, where you can train and test neural netw
 
    6.) If you wish to start the test over on the same generation simply press the reset button, if you wish to completly start fresh select the check box under the reset button and press reset.
 
+# Preview
+![alt text](BrycenAB/Ai_Sandbox_Maze/PreviewImgs/NNGitIMGOverview1.png)
+
+
 # Contributing
 This project is open for contributions. If you find bugs or have a feature request, please open an issue on the GitHub repository. If you would like to use the project feel free to do so with my request of being informed if it is used in any public facing projects.
 
