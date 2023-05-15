@@ -17,9 +17,6 @@ public class FPplayerControler : MonoBehaviour
     [SerializeField] private AnimationCurve jumpFallOff;
     [SerializeField] private float jumpMiltiplier;
     [SerializeField] private KeyCode jumpKey;
-    //[SerializeField] private KeyCode flyKey;
-    //does not have option for lshift have to input manualy
-    //[SerializeField] private KeyCode sprintKey;
 
     [SerializeField] public bool LockCursor = true;
     public bool UpdateCamera = true;
@@ -39,20 +36,14 @@ public class FPplayerControler : MonoBehaviour
     Vector2 currMouseDelta = Vector2.zero;
     Vector2 currMouseDeltaVelocity = Vector2.zero;
 
-    TimerManager.Timer timer;
-
-
-    private void ResetTimer()
-    {
-        timer.Stop();
-        timer.Reset();
-    }
+    
     void Start()
     {
 
         controller = GetComponent<CharacterController>();
-
-        //confine cursor to center and makes invisable
+        /// <summary>
+        /// confine cursor to center and makes invisable
+        /// </summary>
         if (LockCursor == true)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -143,55 +134,6 @@ public class FPplayerControler : MonoBehaviour
             StartCoroutine(jumpEvent());
         }
     }
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-        /*if (collision.collider.gameObject.layer == LayerMask.NameToLayer("JumpPad"))
-        {
-            if(gravity < 40.0f)
-            {
-                gravity = 40.0f;
-                Timer();
-            }
-            
-            
-        }*/
-    //}
-
-    /*void Flying()
-    {
-  
-        if (Input.GetKeyDown(jumpKey) && !controller.isGrounded)
-        {
-            gravity = 20.0f;
-        }
-
-
-        if (!controller.isGrounded)
-        {
-            if (Input.GetKeyUp(jumpKey))
-            {
-                gravity = 0.0f;
-                velocityY = 0.0f;
-            }
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                gravity = -20.0f;
-            }
-            if (Input.GetKeyUp(KeyCode.LeftControl))
-            {
-                gravity = 0.0f;
-                velocityY = 0.0f;
-            }
-        }
-
-        if(controller.isGrounded)
-        {
-            gravity = -13.0f;
-        }
-
-    }*/
-
 
     private IEnumerator jumpEvent()
     {
