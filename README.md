@@ -1,7 +1,7 @@
-# Ai_Sandbox_Maze
+# Ai Maze Runner
 
 
-Welcome to the Ai_Sandbox_Maze project, where you can train and test neural networks to control small bots in a 3D lab facility. In this lab, you will find a maze and 3 viewing floors that you can teleport to. Inside the maze are checkpoints that act as feedback for the neural network, helping it learn how to navigate the maze.
+Welcome to the Ai Maze Runner project, where you can train and test neural networks to control small bots in a 3D lab facility. In this lab, you will find a maze and 3 viewing floors that you can teleport to. Inside the maze are checkpoints that act as feedback for the neural network, helping it learn how to navigate the maze.
 
 # Features
 - Train and test neural networks to control small bots in a 3D lab facility
