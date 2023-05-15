@@ -7,13 +7,13 @@ using System.IO;
 
 public class NeuralNetwork : IComparable<NeuralNetwork>
 {
-    private int[] layers;//layers
-    private float[][] neurons;//neurons
-    private float[][] biases;//biasses
-    private float[][][] weights;//weights
-    private int[] activations;//layers
+    private int[] layers;
+    private float[][] neurons;
+    private float[][] biases;
+    private float[][][] weights;
+    private int[] activations;
 
-    public float fitness = 0;//fitness
+    public float fitness = 0;
 
     public NeuralNetwork(int[] layers)
     {
@@ -27,7 +27,11 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         InitWeights();
     }
 
-    private void InitNeurons()//create empty storage array for the neurons in the network.
+    /// <summary>
+    /// Create empty storage array for the neurons in the network.
+    /// </summary>
+
+    private void InitNeurons()
     {
         List<float[]> neuronsList = new List<float[]>();
         for (int i = 0; i < layers.Length; i++)
@@ -37,7 +41,12 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         neurons = neuronsList.ToArray();
     }
 
-    private void InitBiases()//initializes and populates array for the biases being held within the network.
+
+    /// <summary>
+    /// Initializes and populates array for the biases being held within the network.
+    /// </summary>
+
+    private void InitBiases()
     {
         List<float[]> biasList = new List<float[]>();
         for (int i = 0; i < layers.Length; i++)
@@ -52,7 +61,10 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         biases = biasList.ToArray();
     }
 
-    private void InitWeights()//initializes random array for the weights being held in the network.
+    /// <summary>
+    /// Initializes random array for the weights being held in the network.
+    /// </summary>
+    private void InitWeights()
     {
         List<float[][]> weightsList = new List<float[][]>();
         for (int i = 1; i < layers.Length; i++)
@@ -74,7 +86,11 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         weights = weightsList.ToArray();
     }
 
-    public float[] FeedForward(float[] inputs)//feed forward, inputs >==> outputs.
+    /// <summary>
+    /// feed forward, inputs >==> outputs.
+    /// </summary>
+
+    public float[] FeedForward(float[] inputs)
     {
         for (int i = 0; i < inputs.Length; i++)
         {
@@ -102,7 +118,10 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         return (float)Math.Tanh(value);
     }
 
-    public void Mutate(int chance, float val)//used as a simple mutation function for any genetic implementations.
+    /// <summary>
+    /// used as a simple mutation function for any genetic implementations.
+    /// </summary>
+    public void Mutate(int chance, float val)
     {
         for (int i = 0; i < biases.Length; i++)
         {
@@ -124,7 +143,10 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         }
     }
 
-    public int CompareTo(NeuralNetwork other) //Comparing For NeuralNetworks performance.
+    /// <summary>
+    /// Comparing For NeuralNetworks performance.
+    /// </summary>
+    public int CompareTo(NeuralNetwork other) 
     {
         if (other == null) return 1;
 
@@ -136,7 +158,11 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
             return 0;
     }
 
-    public NeuralNetwork copy(NeuralNetwork nn) //For creatinga deep copy, to ensure arrays are serialzed.
+
+    /// <summary>
+    /// For creating a deep copy, to ensure arrays are serialzed.
+    /// </summary>
+    public NeuralNetwork copy(NeuralNetwork nn) 
     {
         for (int i = 0; i < biases.Length; i++)
         {
@@ -158,7 +184,10 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         return nn;
     }
 
-    public void Load(string path)//this loads the biases and weights from within a file into the neural network.
+    /// <summary>
+    /// this loads the biases and weights from within a file into the neural network.
+    /// </summary>
+    public void Load(string path)
     {
         TextReader tr = new StreamReader(path);
         int NumberOfLines = (int)new FileInfo(path).Length;
@@ -194,7 +223,10 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         }
     }
 
-    public void Save(string path)//this is used for saving the biases and weights within the network to a file.
+    /// <summary>
+    /// this is used for saving the biases and weights within the network to a file.
+    /// </summary>
+    public void Save(string path)
     {
         File.Create(path).Close();
         StreamWriter writer = new StreamWriter(path, true);

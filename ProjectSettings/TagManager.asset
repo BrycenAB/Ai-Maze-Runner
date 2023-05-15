@@ -5,14 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - CheckPoint
+  - Wipe Genetics
+  - StartButton
+  - Settings
+  - MazeManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Checkpoint
+  - CheckPoint
   - Water
   - UI
-  - 
+  - Learner
   - 
   - 
   - 

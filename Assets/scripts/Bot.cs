@@ -9,7 +9,7 @@ public class Bot : MonoBehaviour
     public float rotation = 8;//Rotation multiplier
     public LayerMask raycastMask;//Mask for the sensors
 
-   // public float CurTurnAngle; // to show the decisions being made
+   // public float CurTurnAngle; // to show the decisions being made (if using un comment code in FixedUpdate)
     private float[] input = new float[5];//input to the neural network
 
     public NeuralNetwork network;
@@ -31,17 +31,17 @@ public class Bot : MonoBehaviour
 
     private void Update()
     {
-        if (manager.FurthestPosition < position)
+        if (manager.furthestPosition < position)
         {
-            manager.FurthestPosition = position;
+            manager.furthestPosition = position;
         }
-        if(position > manager.OverallFurthestPos)
+        if(position > manager.overallFurthestPos)
         {
-            manager.OverallFurthestPos = position;
+            manager.overallFurthestPos = position;
         }
     }
 
-    void FixedUpdate()//FixedUpdate is called at a constant interval
+    void FixedUpdate()
     {
         if (!collided)//if the car has not collided with the wall, it uses the neural network to get an output
         {
@@ -104,19 +104,21 @@ public class Bot : MonoBehaviour
         else if(collision.collider.gameObject.layer != LayerMask.NameToLayer("Learner") && !dead)
         {
             collided = true;//stop operation if car has collided
-            Debug.Log("collision name:" + (string)collision.gameObject.name);
+            //Debug.Log("collision name:" + (string)collision.gameObject.name);
             mr.material.color = new Color(2f, 0f, 1f, 1f);
             dead = true;
             if (dead)
             {
-                manager.DeadBots++;
+                manager.deadBots++;
             }
         }
     }
 
-
+    /// <summary>
+    /// Updates fitness of network for sorting
+    /// </summary>
     public void UpdateFitness()
     {
-        network.fitness = position;//updates fitness of network for sorting
+        network.fitness = position;
     }
 }

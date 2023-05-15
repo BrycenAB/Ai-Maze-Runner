@@ -10,15 +10,17 @@ public class Ui_Toggle_Handler : MonoBehaviour
     public FPplayerControler player;
     public GameObject playerObject;
     
-    //Make sure to attach these Buttons in the Inspector
+    /// <summary>
+    /// Ui Buttons and controls
+    /// </summary>
     public Button m_StartButton, m_ResetButton, m_CloseHints,
-        m_floor_tele, m_floor_tele2, m_floor_tele3, m_hide_settings;
+        m_floor_tele, m_floor_tele2, m_floor_tele3, m_hide_settings, m_stop_next_gen;
     private bool ViewingUi = false;
     private bool ViewingSettings = true;
 
     void Start()
     {
-        //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
+        //Calls method when you click coresponding button in ui
         m_StartButton.onClick.AddListener(TaskStartOnClick);
         m_ResetButton.onClick.AddListener(TaskResetOnClick);
         m_CloseHints.onClick.AddListener(TaskCloseHintsClicked);
@@ -26,15 +28,16 @@ public class Ui_Toggle_Handler : MonoBehaviour
         m_floor_tele2.onClick.AddListener(TaskFloorTeleClicked2);
         m_floor_tele3.onClick.AddListener(TaskFloorTeleClicked3);
         m_hide_settings.onClick.AddListener(TaskHideSettingsClicked);
-        //m_PauseButton.onClick.AddListener(TaskPauseClicked);
-        //m_YourThirdButton.onClick.AddListener(() => ButtonClicked(42));
-        //m_YourThirdButton.onClick.AddListener(TaskOnClick);
+        m_stop_next_gen.onClick.AddListener(TaskStopNextGenClicked);
     }
     private void Update()
     {
         unlockSettings();
     }
 
+    /// <summary>
+    /// Unlock cursor to use mouse
+    /// </summary>
     void unlockSettings()
     {
         if (Input.GetKeyDown(KeyCode.I) && !ViewingUi)
@@ -71,16 +74,18 @@ public class Ui_Toggle_Handler : MonoBehaviour
         
     }
     
-   
-    /*void TaskPauseClicked()
+
+    void TaskStopNextGenClicked()
     {
-        if (!manager.gamePaused)
-            manager.Gamespeed = 0.0f;
-        if (manager.gamePaused)
-            manager.Gamespeed = manager.Game_Speed_input.text == "" ? 2.0f : float.Parse(manager.Game_Speed_input.text);
-    }*/
+        manager.StopNextGen();
+        GameObject eventSystem = GameObject.Find("EventSystem");
+        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+    }
 
 
+    /// <summary>
+    ///  Teleportation to different floors
+    /// </summary>
     void TaskFloorTeleClicked()
     {
         Vector3 pos = new Vector3(18.5f, 154.17f, 19.0f);
@@ -108,6 +113,10 @@ public class Ui_Toggle_Handler : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// Close Hint Window
+    /// </summary>
     private void TaskCloseHintsClicked()
     {
         GameObject hintpannel = GameObject.Find("Hints");
@@ -121,19 +130,24 @@ public class Ui_Toggle_Handler : MonoBehaviour
         GameObject eventSystem = GameObject.Find("EventSystem");
         eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
     }
+
+    /// <summary>
+    /// Checks if New Test toggle is selected, if not saves generation #
+    /// </summary>
     void TaskResetOnClick()
     {
+        manager.testRunning = false;
         if (OnToggle.FindObjectOfType<Toggle>().isOn)
         {
-            manager.OverallFurthestPos = 0;
+            manager.overallFurthestPos = 0;
             OnToggle.FindObjectOfType<Toggle>().isOn = false;
             manager.SaveGeneration();
+            string path = "Assets/StreamingAssets/Save.txt";
+            System.IO.File.WriteAllText(path, string.Empty);
         }
-        /*manager.SaveGeneration();
-        manager.CreateBots();*/
         try
         {
-            if(manager.BotsInMaze == true)
+            if(manager.testRunning == true)
             {
                 manager.SaveGeneration();
                 manager.CreateBots();
@@ -145,10 +159,6 @@ public class Ui_Toggle_Handler : MonoBehaviour
             Debug.Log(e.Message);
         }
 
-        
-
-
     }
-
 
 }
