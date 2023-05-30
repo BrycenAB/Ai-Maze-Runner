@@ -32,6 +32,9 @@ Welcome to the Ai Maze Runner project, where you can train and test neural netwo
       - layer 2 is the hidden layer consisting of 3 Neurons
       - Layer 3 is the output layer consisting of 2 Neurons, one controlling the speed of the bot and the other controlling rotation
 
+# To-Do
+- [ ] Convert simple txt save data to json
+- [ ] Add player/camera settings menu
 
 # Contributing
 This project is open for contributions. If you find bugs or have a feature request, please open an issue on the GitHub repository. If you would like to use the project feel free to do so with my request of being informed if it is used in any public facing projects.
