@@ -33,7 +33,7 @@ Welcome to the Ai Maze Runner project, where you can train and test neural netwo
       - Layer 3 is the output layer consisting of 2 Neurons, one controlling the speed of the bot and the other controlling rotation
 
 # To-Do
-- [ ] Convert simple txt save data to json
+- [ ] Convert simple txt save data to SQLight embedded database
 - [ ] Add player/camera settings menu
 
 # Contributing
