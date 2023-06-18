@@ -31,8 +31,8 @@ public class Manager : MonoBehaviour
     public int overallFurthestPos = 0;
 
     public float timeframe;
-    public int populationSize;//creates population size
-    public GameObject prefab;//holds bot prefab
+    public int populationSize;
+    public GameObject prefab;
 
     public int[] layers = new int[3] { 5, 3, 2 };//initializing network to the right size
 
@@ -55,7 +55,7 @@ public class Manager : MonoBehaviour
         if (startPressed == true)
         {
             if (populationSize % 2 != 0)
-                populationSize = 100;//if population size is not even, sets it to 100
+                populationSize = 100;
             
             testRunning = true;
             
