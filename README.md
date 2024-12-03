@@ -1,43 +1,83 @@
-# Ai Maze Runner
+# AI Maze Runner
 
+Welcome to the AI Maze Runner project! This interactive Unity-based simulation allows you to train and test neural networks (NNs) to control bots navigating a 3D maze. The bots receive feedback from checkpoints, enabling them to learn and optimize their paths through the maze. As an observer, you can control various aspects of the experiment, monitor progress, and explore the environment in first-person.
 
-Welcome to the Ai Maze Runner project, where you can train and test neural networks to control small bots in a 3D lab facility. In this lab, you will find a maze and 3 viewing floors that you can teleport to. Inside the maze are checkpoints that act as feedback for the neural network, helping it learn how to navigate the maze.
+---
 
-# Features
-- Train and test neural networks to control small bots in a 3D lab facility
-- Maze with checkpoints to provide feedback for the neural network
-- Teleportation to 3 viewing floors
-- Control over several aspects of the test, such as mutation chance, mutation rate, number of bots in the maze per generation, timeframe in which they have to move through the maze, and the speed at which time passes in the game
-- Option to reset a test and wipe the neural network to start from scratch
-- First person player to observe the bots moving through the maze
-- Information such as number of bots that have died (i.e. ran into a wall), furthest position of the current generation, and overall furthest position
+## Features
 
-# Usage
-   1.) Once you have the project open you can unlock/lock your mouse with the "i" key. 
+- **Neural Network Training**:
+  - Train and test neural networks to control bots in a 3D environment.
+  - Feedback is provided via checkpoints in the maze to facilitate learning.
+  
+- **Maze and Observation**:
+  - 3D maze with teleportation to three observation floors.
+  - First-person player mode for real-time observation of bot behavior.
 
-   2.) The default settings for the test are the ones displayed on the ui for changing parameters, the parameters must be changed before starting the test if you wish to do so.
+- **Customizable Parameters**:
+  - Adjust parameters like mutation chance, mutation rate, number of bots per generation, simulation timeframe, and game speed.
 
-   3.) Use the first person player to observe the bots moving through the maze.
+- **Simulation Management**:
+  - Reset tests while keeping the current neural network intact or start fresh by wiping the neural network.
+  - Track detailed simulation metrics, including:
+    - Number of bots that collided (died).
+    - Furthest position reached by the current and overall generations.
 
-   4.) You have access to 3 teleport buttons on the left side that will take you to diffrent levels.
+---
 
-   5.) Monitor the information displayed in the top right UI, such as number of bots that have died and furthest position.
+## Usage
 
-   6.) If you wish to start the test over on the same generation simply press the reset button, if you wish to completly start fresh select the check box under the reset button and press reset.
-   
-   
-# Bot Overview
-   - The bots NN consists of 3 layers
-      - Layer 1 is the input layer, fed by 5 raycasts (5 neurons) that go out 10 meters in front of them to observer the surrounding area
-      - layer 2 is the hidden layer consisting of 3 Neurons
-      - Layer 3 is the output layer consisting of 2 Neurons, one controlling the speed of the bot and the other controlling rotation
+1. **Start the Simulation**:
+   - Unlock/lock your mouse by pressing the `I` key.
+   - Default test settings are displayed in the UI. Modify these parameters before starting the test if needed.
 
-# To-Do
-- [ ] Convert simple txt save data to SQLight embedded database
-- [ ] Add player/camera settings menu
+2. **Navigate the Environment**:
+   - Use the first-person player to observe bots in the maze.
+   - Teleport between three observation floors using the buttons on the left side.
 
-# Contributing
-This project is open for contributions. If you find bugs or have a feature request, please open an issue on the GitHub repository. If you would like to use the project feel free to do so with my request of being informed if it is used in any public facing projects.
+3. **Monitor Progress**:
+   - View simulation metrics on the top-right UI panel, such as:
+     - Number of bots that have died (collided with walls).
+     - Furthest position reached by bots.
 
-# License
-This project is licensed under the MIT License. See the LICENSE file for more information.
+4. **Manage the Test**:
+   - To restart the current generation, press the "Reset" button.
+   - To start completely fresh, check the box under the "Reset" button and press "Reset."
+
+---
+
+## Bot Neural Network Overview
+
+- **Neural Network Architecture**:
+  - **Input Layer**:
+    - 5 neurons receiving input from raycasts extending 10 meters to detect surrounding obstacles.
+  - **Hidden Layer**:
+    - 3 neurons for intermediate processing.
+  - **Output Layer**:
+    - 2 neurons:
+      - One controls the bot's movement speed.
+      - The other controls its rotation.
+
+---
+
+## To-Do List
+
+- Convert plain text save data to an SQLite embedded database.
+- Add a settings menu for player and camera configurations.
+
+---
+
+## Contributing
+
+This project is open for contributions! If you encounter bugs or have feature suggestions, please open an issue on the GitHub repository. If you wish to use this project in any public-facing applications, I kindly request that you inform me beforehand.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code with appropriate attribution.
+
+---
+
+Thank you for exploring AI Maze Runner! 🚀
+
